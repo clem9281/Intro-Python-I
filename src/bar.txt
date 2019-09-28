@@ -1,0 +1,2 @@
+This is the first line
+This should be on a newline This should be on the same line
