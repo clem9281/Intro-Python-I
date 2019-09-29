@@ -1,5 +1,5 @@
 """
-The Python standard library's 'calendar' module allows you to
+le allows you to
 render a calendar to your terminal.
 https://docs.python.org/3.6/library/calendar.html
 
@@ -19,6 +19,24 @@ and does the following:
    Then exit the program.
 """
 
+# I'm a little confused, is this meant to take in user imput or command line args? The way it is written seems like command line args but it also says user input? It's got sys imported for me so we're going to go with command line args
+
 import sys
-import calendar
-from datetime import datetime
+import calendar                      
+from datetime import date, datetime 
+today = date.today()
+month=today.month
+year = today.year
+args = sys.argv 
+length = len(args)
+
+# since we set the month and year to today already I don't believe I need to actually need to check the len(args) == case
+if (length == 2):
+	# make a list out of calendar.month_name in order to use the index method to find the args string. make sure it's in the right format: first letter capitalized'
+	month = list(calendar.month_name).index(args[1].capitalize())
+elif(length == 3):
+	month = list(calendar.month_name).index(args[1].capitalize())
+	year = int(args[2])
+else:
+	print("Please enter your date in the format month [year]")
+calendar.prmonth(year, month)
